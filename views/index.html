@@ -1,0 +1,38 @@
+@html.extend('layout', function(model){
+    @html.block('content', function(model){
+        @html.include('search')
+        @if(model.rows){
+        	<h1 id="results" class="page-header">@(model.query || 'Latest Resumes') <small>@model.rows.length found!</small></h1>
+        	@if(model.rows.length){
+		        <table class="table table-striped">
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Phone</th>
+					<th>Title</th>
+				</tr>
+	            @model.rows.forEach(function(k){
+	            <tr>
+					<td><a href="/u?id=@k.id&q=@model.query">@k.name</a></td>
+					<td><a href="mailto:@k.email">@k.email</a></td>
+					<td>@k.phone</td>
+					<td>@k.title</td>
+				</tr>
+	            })
+		        </table>
+	        }
+        	if(model.rows.length===0){
+        	<div class="alert alert-danger alert-dismissible fade in" role="alert">
+		      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+		      <h4>Oh snap! We are going bonkers!</h4>
+		      <p>Let's see if we can try and get this on next attempt. Hopefully minian in our data center get it fixed.</p>
+		      <p>@model.error</p>
+		      <p>
+		        <a href="/" class="btn btn-danger">Try Again!</a>
+		        <button type="button" class="btn btn-default">Report an Error</button>
+		      </p>
+		    </div>
+			}
+        }
+    })
+})

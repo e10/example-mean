@@ -1,0 +1,12 @@
+<form method="get" class="form-horizontal" action="/" role="form">
+	<div class="input-group">
+		<input class="form-control" type="text" value="@model.query" id="q" name="q" placeholder="e.g. Java OR C#">
+		<div class="input-group-btn">
+            <button class="btn btn-success" type="submit"> <i class="fa fa-search"></i> </button>
+            <a class="btn btn-default" href="/profile/create"><i class="fa fa-plus"></i></a>
+             @if(model.back){
+            <a class="btn btn-primary" href="@model.back?q=@model.query"> <i class="fa fa-arrow-left"></i> </a>
+            }
+        </div>
+	</div>
+</form>

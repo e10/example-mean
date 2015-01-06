@@ -1,0 +1,24 @@
+@html.extend('layout', function(model){
+    @html.block('content', function(model){
+    	<h1 id="results" class="page-header">Add New <small>Resume</small></h1>
+    	<form method="post" action="/profile">
+			<div class="form-group">
+				<label for="title">Title</label>
+				<input type="text" class="form-control" id="title" value="@model.title" name="title" placeholder="Title">
+			</div>
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input type="text" class="form-control" id="name" value="@model.name" name="name" placeholder="Name">
+			</div>
+			<div class="form-group">
+				<label for="email">Emails</label>
+				<input type="email" class="form-control" id="email" value="@model.email" name="email" placeholder="Enter email">
+			</div>
+			<div class="form-group">
+				<label for="phone">Phone</label>
+				<input type="phone" class="form-control" id="phone" value="@model.phone" name="phone"placeholder="Enter phone">
+			</div>
+			<button type="submit" class="btn btn-default">Add Resume</button>
+    	</form>
+    })
+})

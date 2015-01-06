@@ -1,0 +1,8 @@
+@html.extend('layout', function(model){
+    @html.block('content', function(model){
+        @html.include('search',{back:'/',query:model.bag.query})
+    	<h1 id="profile" class="page-header">@model.name <small>@model.title</small></h1>
+    	<p><a href="mailto:@model.email">@model.email</a> <br />
+    	@model.phone</p>
+    })
+})
